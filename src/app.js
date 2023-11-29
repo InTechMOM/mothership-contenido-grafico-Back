@@ -2,10 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const routerApi = require('./middleware/indexRoutes');
 require ("dotenv").config();
+const { openApiSpecification } = require('./config/swaggerConfig');
+const swaggerUi = require('swagger-ui-express');
+
 
 const app = express();
 app.use(express.json());
 routerApi(app);
+
+app.use('/docs', swaggerUi.serve);
+  app.get('/docs', swaggerUi.setup(openApiSpecification));
 
 const BD_URI = process.env.BD_URI;
 const PORT = process.env.PORT;

@@ -10,7 +10,9 @@ const swaggerOptions = {
     },
   },
   apis: [
-    './controllers/audioController',
+    'app.js',
+    './middleware/indexRoutes.js',
+    './routes/audioRouter.js',
     './controllers/imageController',
     './controllers/generateController',
     './controllers/descriptionController'
